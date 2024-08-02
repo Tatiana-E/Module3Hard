@@ -1,17 +1,17 @@
 def calculate_structure_sum(data_structure):
-    summa = 0
+    sum = 0
     if isinstance(data_structure, dict):
         for key, value in data_structure.items():
-            summa += calculate_structure_sum(key)
-            summa += calculate_structure_sum(value)
-    elif isinstance(data_structure, (list, tuple, set)):
+            sum += calculate_structure_sum(key)
+            sum += calculate_structure_sum(value)
+    if isinstance(data_structure, (list, tuple, set)):
         for item in data_structure:
-            summa += calculate_structure_sum(item)
-    elif isinstance(data_structure, (int, float)):
-        summa += data_structure
+            sum += calculate_structure_sum(item)
+    if isinstance(data_structure, (int, float)):
+        sum += data_structure
     elif isinstance(data_structure, str):
-        summa += len(data_structure)
-    return summa
+        sum += len(data_structure)
+    return sum
 
 
 data_structure = [
